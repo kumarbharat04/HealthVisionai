@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emotion Detection | HealthVisionAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #0b001a, #1a0033);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px #6f00ff;
+    }
+
+    p.status {
+      font-size: 1rem;
+      margin-bottom: 25px;
+      color: #cccccc;
+    }
+
+    .video-container {
+      margin: 20px auto;
+      border: 5px solid #6f00ff;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #6f00ff80;
+      width: fit-content;
+    }
+
+    img {
+      border-radius: 15px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .controls {
+      margin-top: 30px;
+    }
+
+    .btn {
+      background: #6f00ff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 10px;
+      margin: 0 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #6f00ff90;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #8c32ff;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        width: 90%;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>😊 Real-Time Emotion Detection</h1>
+  <p class="status" id="camera-status">Camera is <strong>ON</strong>. Detecting your emotions live...</p>
+
+  <div class="video-container" id="video-section">
+    <img id="camera-feed" src="{{ url_for('video_feed') }}" width="720" height="540">
+  </div>
+
+  <div class="controls">
+    <button class="btn" onclick="toggleCamera()" id="toggle-btn">🔴 Turn OFF Camera</button>
+    <a href="/" class="btn">🔙 Back to Home</a>
+  </div>
+
+  <script>
+    let cameraOn = true;
+
+    function toggleCamera() {
+      const video = document.getElementById("camera-feed");
+      const btn = document.getElementById("toggle-btn");
+      const status = document.getElementById("camera-status");
+
+      if (cameraOn) {
+        video.src = "";
+        btn.innerText = "🟢 Turn ON Camera";
+        status.innerHTML = "Camera is <strong>OFF</strong>. Click to activate.";
+      } else {
+        video.src = "{{ url_for('video_feed') }}";
+        btn.innerText = "🔴 Turn OFF Camera";
+        status.innerHTML = "Camera is <strong>ON</strong>. Detecting your emotions live...";
+      }
+
+      cameraOn = !cameraOn;
+    }
+  </script>
+
+</body>
+</html>

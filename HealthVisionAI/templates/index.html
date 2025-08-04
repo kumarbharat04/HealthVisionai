@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthVisionAI</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    #user-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    #send-btn, #mic-btn {
+      background: #6f00ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #send-btn:hover, #mic-btn:hover {
+      background: #4c00cc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav style="background:#140033; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+    <h2 style="color:#fff; text-shadow: 0 0 5px #6f00ff;">HealthVisionAI</h2>
+    <div>
+      <a href="#chat" style="color: #fff; text-decoration: none; margin-right: 20px;">💬 Chatbot</a>
+      <a href="/emotion" style="color: #fff; text-decoration: none; margin-right: 20px;">😊 Emotion Detector</a>
+      <a href="#about" style="color: #fff; text-decoration: none;">📄 About</a>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <header class="hero-section">
+    <h1>🌟 HealthVisionAI</h1>
+    <p>Your AI Assistant for Health & Well-being</p>
+    <a href="#chat" class="cta-button">Start Chat</a>
+  </header>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-text">
+      <h2>ABOUT US</h2>
+      <p>
+        HealthVisionAI is a modern AI-powered assistant designed to help you improve your physical and mental well-being through voice, vision, and chatbot support. 
+        We're committed to making healthcare more accessible and friendly, one chat at a time.
+      </p>
+    </div>
+    <img src="/static/about.jpg" alt="About HealthVisionAI" />
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2>FAQs</h2>
+    <div class="faq-grid">
+      <div class="faq-card">
+        <span>💬</span>
+        <h3>How can I use this assistant?</h3>
+        <p>Simply ask a question about health, stress, fitness, or lifestyle, and the AI will guide you.</p>
+      </div>
+      <div class="faq-card">
+        <span>🎤</span>
+        <h3>Is voice input supported?</h3>
+        <p>Yes! Use the mic icon in the chatbot to speak directly to the assistant using your voice.</p>
+      </div>
+      <div class="faq-card">
+        <span>📷</span>
+        <h3>Can it detect health objects?</h3>
+        <p>It supports vision features like object detection in medical and wellness-related use cases.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chat Section -->
+  <section class="chat-area" id="chat">
+    <div class="chat-container">
+      <div class="chat-header">💬 Chat with HealthVisionAI</div>
+      <div class="chat-box" id="chat-box"></div>
+      <form onsubmit="event.preventDefault(); sendMessage();" class="input-row">
+        <input type="text" id="user-input" placeholder="Ask anything..." required />
+        <button type="button" id="mic-btn" onclick="startListening()" title="Speak your query 🎤">🎤</button>
+        <button type="submit" id="send-btn">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Emotion Detector Button -->
+  <div style="text-align: center; margin: 50px 0;">
+    <a href="/emotion" class="cta-button">😊 Try Emotion Detection</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 HealthVisionAI. All rights reserved.</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
